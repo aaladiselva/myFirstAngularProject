@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+	<div>
+	<form name="loginForm" novalidate>
+		<h1> Login </h1>
+		<fieldset>
+			<label>User Name :</label>
+			<input type="email" name="email" label="email" ng-model="user.email" required/>
+			<span style="color:red" ng-show="loginForm.email.$touched && loginForm.email.$invalid">
+				<span ng-show="loginForm.email.$error.required">Email is required
+				</span>
+				<span ng-show="loginForm.email.$error.email">Invalid email </span>
+			</span>
+
+			<label>Password :</label>
+			<input type="password" name="password" ng-model='user.password' required />
+			<span style="color:red" ng-show="loginForm.password.$touched && loginForm.password.$invalid">
+				<span ng-show="loginForm.password.$error.required">Password is required</span>
+			</span>
+		</fieldset>
+
+		<fieldset>
+			<button ng-disabled="loginForm.$invalid" ng-click="submit( user )"> Submit </button>
+		</fieldset>
+	</form>
+</div>

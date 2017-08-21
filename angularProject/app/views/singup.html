@@ -1,0 +1,57 @@
+
+<div>
+	<form name="simpleForm" novalidate>
+		<h1> Sing Up </h1>
+		<fieldset>
+			<label>Email :</label>
+			<input type='email' name="email" ng-model="user.email" required/>
+			<span style = "color:red" ng-show = "simpleForm.email.$dirty && simpleForm.email.$invalid">
+				<span ng-show="simpleForm.email.$error.required">Email is required
+				</span>
+				<span ng-show="simpleForm.email.$error.email">Invalid email </span>
+			</span>
+
+			<label>Password :</label>
+			<input type='password' name="password" ng-model='user.password' required ng-minlength="3" ng-maxlength="15"/>
+			<span style="color:red" ng-show="simpleForm.password.$dirty && simpleForm.password.$invalid" >
+			<span ng-show="simpleForm.password.$error.minlength">Too short</span>
+			<span ng-show="simpleForm.password.$error.required">Password is required </span>
+			</span>
+
+			<label>Re-Enter Password :</label>
+			<input type="password" name="repassword" ng-model="user.repassword" required ng-minlength="3" ng-maxlength="15"/>
+			<span style = "color:red" ng-show="simpleForm.repassword.$dirty && simpleForm.repassword.$invalid" >
+				<span ng-show="simpleForm.repassword.$error.minlength"> Too Short </span>
+				<span ng-show="simpleForm.repassword.$error.required">
+				Re-enter password required</span>
+				<span ng-show="(simpleForm.password.$dirty && simpleForm.repassword.$dirty) && (user.password != user.repassword)">
+				Password mismatch
+				</span>
+			</span>
+
+			<label>First Name : </label>
+			<input type='text' name="firstname" ng-model='user.firstname' required/>
+			<span style = "color:red" ng-show="simpleForm.firstname.$dirty && simpleForm.firstname.$invalid">
+				<span ng-show="simpleForm.firstname.$error.required">
+					First name is required
+				</span>
+			</span>
+
+			<label>Last Name :
+			<input type='text' name="lastname" ng-model='user.lastname' />
+			<span style = "color:red" ng-show="simpleForm.lastname.$dirty && simpleForm.lastname.$invalid">
+				<span ng-show="simpleForm.lastname.$error.invalid"> Last name is invalid </span>
+			</span>
+
+			<label>Gender :</label>
+			<input type='radio' ng-model='user.gender' value='male'>Male
+			<input type='radio' ng-model='user.gender' value='female'>Female
+		</fieldset>
+
+		<fieldset>
+			<button ng-click="reset()">Reset</button>
+			<button ng-disabled="simpleForm.$invalid" ng-click="submit()"> Submit </button>
+		</fieldset>
+	</form>
+
+</div>
